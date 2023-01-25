@@ -1,0 +1,4 @@
+[client.${CEPH_USER}]
+
+key = ${CEPH_KEYRING_BASE64}
+
