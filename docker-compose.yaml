@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  ceph-fuse:
+    container_name: ceph-fuse
+    image: ilyesaj/docker-ceph-client:1.0
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - 'apparmor:unconfined'
+    devices:
+      - /dev/fuse
+    volumes:
+      - './ceph:/data:rshared'
+    network_mode: "host"
+    environment:  
+      MONITOR_HOSTS: 'xx'
+      CEPH_USER: 'xx'
+      CEPH_CLUSTER_NAME: 'xx'
+      CEPH_KEYRING_BASE64: 'xx'
+      CEPH_VOLUME_PATH: '/volumes/xx/xx/xx'
+      CEPH_MOUNT: '/data'
